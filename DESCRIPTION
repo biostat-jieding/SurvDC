@@ -1,0 +1,29 @@
+Package: SurvDC
+Title: Survival Analysis under Dependent Censoring using Copula with
+        Unknown Association
+Version: 1.6.8
+Authors@R: 
+  c(
+  person(given = "Jie",
+         family = "Ding",
+         role = c("aut,cre"),
+         email = "biostat_jieding@outlook.com",
+         comment = c(ORCID = "0000-0002-6083-7529")),
+  person(given = "Ingrid",
+         family = "Van Keilegom",
+         role = c("aut"),
+         email = "ingrid.vankeilegom@kuleuven.be",
+         comment = c(ORCID = "0000-0001-8827-7642"))
+  )
+Author: Jie Ding [aut,cre] (ORCID: <https://orcid.org/0000-0002-6083-7529>), Ingrid Van Keilegom [aut] (ORCID: <https://orcid.org/0000-0001-8827-7642>)
+Maintainer: Jie Ding <biostat_jieding@outlook.com>
+Description: Provide approaches that can be used to model right-censored survival data under dependent censoring (without covariates). The copula-based approach is adopted and there is no need to explicitly specify the association parameter. Various specifications of marginal distributions can be considered, including fully parametric margins or letting one of the margins to be nonparametric. The existence of a cured fraction concerning survival time can also be taken into consideration. References of the underlying methods include: Czado and Van Keilegom (2023) <doi:10.1093/biomet/asac067> and Delhelle and Van Keilegom (2024) <doi:10.48550/arXiv.2403.07963>.
+License: GPL (>= 2)
+Encoding: UTF-8
+Depends: R (>= 3.5.0)
+Imports: methods, Matrix, copula, EnvStats
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+URL: <https://github.com/Stat-WangXG/SurvMA>
+NeedsCompilation: no
+Packaged: 2024-10-18 10:33:35 UTC; biost
