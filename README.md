@@ -12,7 +12,7 @@ This is an *R* package for providing approaches that can be used to model **righ
   - Delhelle and Van Keilegom (2024) (https://doi.org/10.48550/arXiv.2403.07963).
   - Semiparametric modeling framework is proposed by Ding and Van Keilegom with manuscript in preparation.
 
-## Package description and included main functions
+## Package description and the main function
 
 ### Installation
 Installation of this package can be done locally after downloading the package manually from this github website. 
