@@ -1,5 +1,4 @@
-# *SurvDC* *R* *Package*
-## Survival Analysis under Dependent Censoring using Copula with Unknown Association
+# *SurvDC* *R* *Package*: Survival Analysis under Dependent Censoring using Copula with Unknown Association
 
 This is an *R* package for providing approaches that can be used to model **right-censored survival data** under **dependent censoring** (without covariates). 
 - Key Technique: **COPULA**. 
@@ -10,17 +9,17 @@ This is an *R* package for providing approaches that can be used to model **righ
 - The existence of **a cured fraction** concerning survival time can be considered.
 - References of the underlying methods include: Czado and Van Keilegom (2023) <doi:10.1093/biomet/asac067> and Delhelle and Van Keilegom (2024) <doi:10.48550/arXiv.2403.07963>. Semiparametric modeling framework is proposed by Ding and Van Keilegom with manuscript in preparation.
 
-
-
-
 ## Package description and included main functions
 
+### Installation
 Installation of this package can be done locally after downloading the package manually from this github website. 
 We will also upload this package to the Comprehensive R Archive Network (CRAN) so that it can be downloaded as a standard R package. 
 Currently, it can be loaded using *R* command
 ```R
 devtools::install_github("biostat_jieding/SurvDC")
 ```
+
+### Main function and its arguments
 The main function included in our *R* package is *SurvDC()*  and it can be called via the following *R* command:
 ```R
 SurvDC(
@@ -40,7 +39,6 @@ SurvDC(
     )
 )
 ```
-
 We refer to its help page for more detailed explanations of the corresponding arguments (typing *?SurvDC()*). 
 Here, we provide a brief introduction of them:
 - **yobs** a numeric vector that indicated the observed survival times.
@@ -61,7 +59,8 @@ Note if one of the marginal distributions should be modeled nonparametrically, o
   - *eps* a positive small numeric value that denotes the tolerance for convergence. The default value is *1e-6*.
   - *trace* a logical value that judges whereh the tracing information on the progress of the model fitting should be produced. The default value if *TRUE*.
   - *ktau.inits* a numeric vector that contains initial values of the Kendall's tau. The default value is *NULL*, meaning that a grids of initial values will be automatically generated within our function.
- 
+
+### Tractable modeling frameworks
 We remark here that two essential arguments are *margins* and *cure* which can help us realize the follow different modeling frameworks:
 - *parametric survival and censoring margins (without cure)*
   - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
@@ -77,37 +76,18 @@ We remark here that two essential arguments are *margins* and *cure* which can h
   - *survfam* is not *NULL*, *censfam = NULL* and *cure = TRUE*.
 
 
-## Examples
+## Numerical illustrations
+
+We are going to use simulated datasets to illustrate the useages of our *R* package from different perspectives.
+Before executing the following examples, we need to library the package:
+```R
+library(SurvDC)
+```
+
+### simulated data from Frank copula log-Normal margins (without cure)
+#### generate the simulated data
 
 ```R
-
-
-#------------------------------------------------------------------------#
-# Description (Example File for Replication): 
-#   Survival Analysis under Dependent Censoring
-#     - based on copulas
-#     - fully parametric or partially nonparametric margins
-#     - without or with the inclusion of a cured fraction
-#------------------------------------------------------------------------#
-# Author  : Jie Ding (DLUT) and Ingrid Van Keilegom (KUL)
-# E-Mail  : biostat_jieding@outlook.com (Jie Ding)
-#------------------------------------------------------------------------#
-
-#----------------------------------------------------------#
-# Basic preparations before running subsequent examples ####
-#----------------------------------------------------------#
-
-## clear the environment 
-rm(list=ls(all=TRUE))
-
-## library package
-library(SurvDC)
-
-#------------------------------------------------------------------------#
-# simulated data from Frank copula log-Normal margins (without cure)
-#------------------------------------------------------------------------#
-
-## generate the simulated data
 
 # - the sample size of the generated data
 n <- 2000
