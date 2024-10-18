@@ -1,21 +1,80 @@
-# *SurvDC* R Package
+# *SurvDC* *R* *Package*
 ## Survival Analysis under Dependent Censoring using Copula with Unknown Association
 
+This is an *R* package for providing approaches that can be used to model **right-censored survival data** under **dependent censoring** (without covariates). 
+- Key Technique: **COPULA**. 
+- There is ***no need** to explicitly specify the **association parameter***.
+- Allow for *flexible modeling frameworks* (with more details shown later):
+  - Both marginal distributions are parametric (**fully parametric scenario**).
+  - One of the marginal distributions is nonparametric (**semiparametric scenario**).
+- The existence of **a cured fraction** concerning survival time can be considered.
+- References of the underlying methods include: Czado and Van Keilegom (2023) <doi:10.1093/biomet/asac067> and Delhelle and Van Keilegom (2024) <doi:10.48550/arXiv.2403.07963>. Semiparametric modeling framework is proposed by Ding and Van Keilegom with manuscript in preparation.
 
-An R package for estimating survival function under dependent censoring.
-- adopt copula-based approaches
-- without the consideration of covariates
-- impose fully parametric margins or let one of the margins to be nonparametric
-- with or without the existence of a cured fraction
-- In summary, we consider the following cases:
-  - fully-parametric margins (without cure)
-  - fully-parametric margins (with cure in survival time)
-  - nonparametric survival margin and parametric censoring margin (without cure)
-  - nonparametric survival margin and parametric censoring margin (with cure in survival time)
-  - parametric survival margin and nonparametric censoring margin (without cure)
-  - parametric survival margin and nonparametric censoring margin (with cure in survival time)
 
-For details are on the way ... Thank you for your attention!
+
+
+## Package description and included main functions
+
+Installation of this package can be done locally after downloading the package manually from this github website. 
+We will also upload this package to the Comprehensive R Archive Network (CRAN) so that it can be downloaded as a standard R package. 
+Currently, it can be loaded using *R* command
+```R
+devtools::install_github("biostat_jieding/SurvDC")
+```
+The main function included in our *R* package is *SurvDC()*  and it can be called via the following *R* command:
+```R
+SurvDC(
+    yobs, 
+    delta,
+    tm      = NULL, 
+    copfam  = "frank",
+    margins = list(survfam = NULL,    survtrunc = NULL,  
+                   censfam = "lnorm", censtrunc = NULL),
+    cure    = FALSE,
+    Var     = list(do = TRUE, nboot = 50),
+    control = list(
+      maxit      = 300,
+      eps        = 1e-6,
+      trace      = TRUE,
+      ktau.inits = NULL
+    )
+)
+```
+
+We refer to its help page for more detailed explanations of the corresponding arguments (typing *?SurvDC()*). 
+Here, we provide a brief introduction of them:
+- **yobs** a numeric vector that indicated the observed survival times.
+- **delta** a numeric vector that stores the right-censoring indicators.
+- **tm** a numeric vector that contains interested non-negative time points at which the survival probabilities will be evluated. Note that if we omit the definition of this argument (the default value becomes *NULL*), our function will automatically output survival probabilities at all oberserved time points, that is, *yobs*.
+- **copfam** a character string that specifies the copula family. Currently, it supports Archimedean copula families, including *"frank"* (the default value), *"clayton"*, *"gumbel"*, and *"joe"*. The degenerated independent censoring case can be considered as well by setting *"indep"*. (other options will be added in the near future!)
+- **margins** a list used to define the distribution structures of both the survival and censoring margins. Specifically, it contains the following elements:
+  - *survfam* a character string that defines the assumed distribution for the survival time random variable, including *"lnorm"* for log-normal distribution, *"weibull"* for weibull distribution (other options will be added in the near future).
+  - *censfam* a character string that defines the assumed distribution for the censoring time random variable, and the details are the same as those shown in *survfam*.
+  - *survtrunc* a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *survfam*.
+  - *censtrunc* a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *censfam*.
+Note if one of the marginal distributions should be modeled nonparametrically, one can let the corresponding argument to be *NULL* directly. For example if a semiparametric framework that defines the survival margin to be nonparametric and the censoring margin to be parametric, say log-normal, is desired, we can let *survfam = NULL* and *censfam = "lnorm"*, which is indeed the default value. Furthermore, if no truncation is imposed in *survfam* (or *censfam*), one can directly omit the specification of *survtrunc* (or *censtrunc*), which is the default specification. We also remark here that when a cured fraction is included (*cure = TRUE*), if *survfam* is not *NULL* and *survtrunc = NULL*, we will automatically let *survtrunc* to be *max(yobs)*.
+#'   If we wants to model the data with a non-truncated survival distribution when there is a cured fraction, we can set *survtrunc = Inf*.
+- **cure** a logical value that indicates whether the existence of a cured fraction should be considered.
+- **Var** a list that controls the execution of the bootstrap for variance estimation, and it contains two elements: *do* is a logical value with default \code{FALSE} to tell the function whether the boostrap-based variances should be calculated; *nboot* is a numeric integer that specifies the number of bootstrap samples.
+- **control** indicates more detailed control of the underlying model fitting procedures. It is a list of the following three arguments:
+  - *maxit* a positive integer that denotes the maximum iteration number in optimization. The default value is *300*.
+  - *eps* a positive small numeric value that denotes the tolerance for convergence. The default value is *1e-6*.
+  - *trace* a logical value that judges whereh the tracing information on the progress of the model fitting should be produced. The default value if *TRUE*.
+  - *ktau.inits* a numeric vector that contains initial values of the Kendall's tau. The default value is *NULL*, meaning that a grids of initial values will be automatically generated within our function.
+ 
+We remark here that two essential arguments are *margins* and *cure* which can help us realize the follow different modeling frameworks:
+- *parametric survival and censoring margins (without cure)*
+  - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
+- *parametric survival and censoring margins (with cure)*
+  - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
+- *nonparametric survival margin and parametric censoring margin (without cure)*
+  - *survfam = NULL*, *censfam* is not *NULL* and *cure = FALSE*.
+- *nonparametric survival margin and parametric censoring margin (with cure)*
+  - *survfam = NULL*, *censfam* is not *NULL* and *cure = TRUE*.
+- *parametric survival margin and nonparametric censoring margin (without cure)*
+  - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
+- *parametric survival margin and nonparametric censoring margin (with cure)*
+  - *survfam* is not *NULL*, *censfam = NULL* and *cure = TRUE*.
 
 
 ## Examples
