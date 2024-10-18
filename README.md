@@ -274,3 +274,5 @@ sol.scenario6$ktau
 sol.scenario6$parapar
 sol.scenario6$curerate
 ```
+
+*This R package was contributed by **Jie Ding** and **Ingrid Van Keilegom**.*
