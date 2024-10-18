@@ -7,7 +7,10 @@ This is an *R* package for providing approaches that can be used to model **righ
   - Both marginal distributions are parametric (**fully parametric scenario**).
   - One of the marginal distributions is nonparametric (**semiparametric scenario**).
 - The existence of **a cured fraction** concerning survival time can be considered.
-- References of the underlying methods include: Czado and Van Keilegom (2023) <doi:10.1093/biomet/asac067> and Delhelle and Van Keilegom (2024) <doi:10.48550/arXiv.2403.07963>. Semiparametric modeling framework is proposed by Ding and Van Keilegom with manuscript in preparation.
+- References of the underlying methods include:
+  - Czado and Van Keilegom (2023) (https://doi.org/10.1093/biomet/asac067).
+  - Delhelle and Van Keilegom (2024) (https://doi.org/10.48550/arXiv.2403.07963).
+  - Semiparametric modeling framework is proposed by Ding and Van Keilegom with manuscript in preparation.
 
 ## Package description and included main functions
 
