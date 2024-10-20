@@ -100,7 +100,7 @@ information on the used copula
 ```R
 copfam.true <- "frank"
 ktau.true <- 0.5
-coppar.true <- ktau.to.coppar(ktau=ktau.true,copfam=copfam.true)
+coppar.true <- ktau.to.coppar(ktau = ktau.true, copfam = copfam.true)
 ```
 
 parameters of the underlying log-normal marginal distributions
