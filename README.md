@@ -31,14 +31,14 @@ The following two scenarios are **what we mainly focused on**:
   - *survfam = NULL*, *censfam* is not *NULL* and *cure = TRUE*.
 
 As byproducts, several other scenarios can also be considered by this *R* package:
+- **parametric survival and censoring margins (without cure)**
+  - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
+- **parametric survival and censoring margins (with cure)**
+  - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
 - **parametric survival margin and nonparametric censoring margin (without cure)**
   - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
 - **parametric survival margin and nonparametric censoring margin (with cure)**
   - *survfam* is not *NULL*, *censfam = NULL* and *cure = TRUE*.
-  - - **parametric survival and censoring margins (without cure)**
-  - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
-- **parametric survival and censoring margins (with cure)**
-  - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
 
 We emphasize that part of them can also be realized in other *R* packages.
 For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named *depCensoring*, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org.
