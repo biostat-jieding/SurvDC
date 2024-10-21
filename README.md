@@ -24,18 +24,18 @@ devtools::install_github("biostat_jieding/SurvDC")
 ### Tractable modeling frameworks
 As will be shown later, there are two essential arguments, *margins* and *cure*, in our main function and they can help us realize the follow different modeling frameworks.
 
-The following two scenarios are **what we mainly focused on**:
+*The following two scenarios are **what we mainly focused on***:
 - **nonparametric survival margin and parametric censoring margin (without cure)**
   - *survfam = NULL*, *censfam* is not *NULL* and *cure = FALSE*.
 - **nonparametric survival margin and parametric censoring margin (with cure)**
   - *survfam = NULL*, *censfam* is not *NULL* and *cure = TRUE*.
 
 As byproducts, several other scenarios (the distribution of the underlying survival time is not nonparametric anymore, but instead fully parametric) can also be considered by this *R* package:
-- **parametric survival and censoring margins (without cure)**
+- *parametric survival and censoring margins (without cure)*
   - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
-- **parametric survival and censoring margins (with cure)**
+- *parametric survival and censoring margins (with cure)*
   - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
-- **parametric survival margin and nonparametric censoring margin (without cure)**
+- *parametric survival margin and nonparametric censoring margin (without cure)*
   - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
 
 We emphasize that part of them can also be realized in other *R* packages. For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named *depCensoring*, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org.
