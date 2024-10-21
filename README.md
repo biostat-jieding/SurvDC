@@ -38,7 +38,7 @@ As byproducts, several other scenarios (the distribution of the underlying survi
 - *parametric survival margin and nonparametric censoring margin (without cure)*
   - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
 
-We emphasize that part of them can also be realized in other *R* packages. For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named *depCensoring*, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org.
+We emphasize that part of them can also be realized in other *R* packages. For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named **depCensoring**, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org.
 
 Furthermore, one might expect that a scenario with "parametric survival margin and nonparametric censoring margin (with cure)" can also be included.
 Indeed, it can be done by this *R* package based on: *survfam* is not *NULL*, *censfam = NULL* and *cure = TRUE*.
