@@ -32,7 +32,7 @@ As will be shown later, there are two essential arguments, *margins* and *cure*,
 
 As byproducts, several other scenarios (the distribution of the underlying survival time is not nonparametric anymore, but instead fully parametric) can also be considered by this *R* package:
 - *parametric survival and censoring margins (without cure)*
-  - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
+  - both *survfam* and *censfam* are not *NULL* and *cure = FALSE*.
 - *parametric survival and censoring margins (with cure)*
   - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
 - *parametric survival margin and nonparametric censoring margin (without cure)*
