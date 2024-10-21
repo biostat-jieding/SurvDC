@@ -3,9 +3,8 @@
 This is an *R* package for providing approaches that can be used to model **right-censored survival data** under **dependent censoring** (without covariates). 
 - Key Technique: **COPULA**. 
 - There is ***no need** to explicitly specify the **association parameter***.
-- Allow for *flexible modeling frameworks* (with more details shown later):
-  - Both marginal distributions are parametric (**fully parametric scenario**).
-  - One of the marginal distributions is nonparametric (**semiparametric scenario**).
+- Allow for *flexible modeling frameworks*: One of the marginal distributions is nonparametric (**semiparametric scenario**).
+  - As a byproduct, we can also consider the case where both marginal distributions are parametric.
 - The existence of **a cured fraction** concerning survival time can be considered.
 - References of the underlying methods include:
   - Czado and Van Keilegom (2023) (https://doi.org/10.1093/biomet/asac067).
