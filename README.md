@@ -141,7 +141,7 @@ cat("censoring rate is",mean(1-delta))
 
 #### model the data under different scenarios
 
-scenario 1: parametric survival and censoring margins
+scenario 1: nonparametric survival margin and parametric censoring margin
 ```R
 set.seed(1)
 sol.scenario1 <- SurvDC(
@@ -149,7 +149,7 @@ sol.scenario1 <- SurvDC(
   delta   = delta, 
   tm      = quantile(yobs, c(0.25,0.50,0.75)), 
   copfam  = copfam.true,
-  margins = list(survfam = "lnorm", censfam = "lnorm"),
+  margins = list(survfam = NULL, censfam = "lnorm"),
   Var     = list(do = TRUE, nboot = 50)
 )
 sol.scenario1$probs
@@ -157,7 +157,7 @@ sol.scenario1$ktau
 sol.scenario1$parapar
 ```
 
-scenario 2: nonparametric survival margin and parametric censoring margin
+scenario 2: parametric survival and censoring margins
 ```R
 set.seed(1)
 sol.scenario2 <- SurvDC(
@@ -165,7 +165,7 @@ sol.scenario2 <- SurvDC(
   delta   = delta, 
   tm      = quantile(yobs, c(0.25,0.50,0.75)), 
   copfam  = copfam.true,
-  margins = list(survfam = NULL, censfam = "lnorm"),
+  margins = list(survfam = "lnorm", censfam = "lnorm"),
   Var     = list(do = TRUE, nboot = 50)
 )
 sol.scenario2$probs
@@ -230,7 +230,25 @@ cat("censoring rate is",mean(1-delta))
 
 #### model the data under different scenarios (with cure)
 
-scenario 4: parametric survival and censoring margins
+scenario 4: nonparametric survival margin and parametric censoring margin
+```R
+set.seed(1)
+sol.scenario4 <- SurvDC(
+  yobs    = yobs, 
+  delta   = delta, 
+  tm      = quantile(yobs, c(0.25,0.50,0.75)), 
+  copfam  = copfam.true,
+  margins = list(survfam = NULL, censfam = "lnorm"),
+  Var     = list(do = TRUE, nboot = 50),
+  cure    = TRUE
+)
+sol.scenario4$probs
+sol.scenario4$ktau
+sol.scenario4$parapar
+sol.scenario4$curerate
+```
+
+scenario 5: parametric survival and censoring margins
 ```R
 set.seed(1)
 sol.scenario4 <- SurvDC(
@@ -242,29 +260,10 @@ sol.scenario4 <- SurvDC(
   Var     = list(do = TRUE, nboot = 50),
   cure    = TRUE
 )
-sol.scenario4$probs
-sol.scenario4$ktau
-sol.scenario4$parapar
-sol.scenario4$curerate
-```
-
-scenario 5: nonparametric survival margin and parametric censoring margin
-```R
-set.seed(1)
-sol.scenario5 <- SurvDC(
-  yobs    = yobs, 
-  delta   = delta, 
-  tm      = quantile(yobs, c(0.25,0.50,0.75)), 
-  copfam  = copfam.true,
-  margins = list(survfam = NULL, censfam = "lnorm"),
-  Var     = list(do = TRUE, nboot = 50),
-  cure    = TRUE
-)
 sol.scenario5$probs
 sol.scenario5$ktau
 sol.scenario5$parapar
 sol.scenario5$curerate
 ```
-
 
 *This R package was contributed by **Jie Ding** and **Ingrid Van Keilegom**.*
