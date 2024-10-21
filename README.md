@@ -265,22 +265,5 @@ sol.scenario5$parapar
 sol.scenario5$curerate
 ```
 
-scenario 6: parametric survival margin and nonparametric censoring margin
-```R
-set.seed(1)
-sol.scenario6 <- SurvDC(
-  yobs    = yobs, 
-  delta   = delta, 
-  tm      = quantile(yobs, c(0.25,0.50,0.75)), 
-  copfam  = copfam.true,
-  margins = list(survfam = "lnorm", censfam = NULL),
-  Var     = list(do = TRUE, nboot = 50),
-  cure    = TRUE
-)
-sol.scenario6$probs
-sol.scenario6$ktau
-sol.scenario6$parapar
-sol.scenario6$curerate
-```
 
 *This R package was contributed by **Jie Ding** and **Ingrid Van Keilegom**.*
