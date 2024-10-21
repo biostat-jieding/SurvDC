@@ -1,4 +1,4 @@
-# *SurvDC* *R* *Package*: Survival Analysis under Dependent Censoring using Copula with Unknown Association
+# *SurvDC* *R* *Package*: Nonparametric Survival Analysis under Dependent Censoring with Unknown Association
 
 This is an *R* package for providing approaches that can be used to model **right-censored survival data** under **dependent censoring** (without covariates). 
 - Key Technique: **COPULA**. 
