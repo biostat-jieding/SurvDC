@@ -37,6 +37,7 @@ As byproducts, several other scenarios can also be considered by this *R* packag
   - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
 - **parametric survival and censoring margins (with cure)**
   - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
+
 We emphasize that part of them can also be realized in other *R* packages.
 For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named *depCensoring*, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org.
 
@@ -80,6 +81,7 @@ Note that if one of the marginal distributions should be modeled nonparametrical
 Furthermore, in our argument *margins*, two addition elements can by inputted:
 - **survtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *survfam*.
 - **censtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *censfam*.
+
 If no truncation is imposed in *survfam* (or *censfam*), one can directly omit the specification of *survtrunc* (or *censtrunc*), which is the default specification. We also remark here that when a cured fraction is included (*cure = TRUE*), if *survfam* is not *NULL* and *survtrunc = NULL*, we will automatically let *survtrunc* to be *max(yobs)*. If we wants to model the data with a non-truncated survival distribution when there is a cured fraction, we can set *survtrunc = Inf*.
 
 ## Numerical illustrations
