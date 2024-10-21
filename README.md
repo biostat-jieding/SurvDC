@@ -23,11 +23,13 @@ devtools::install_github("biostat_jieding/SurvDC")
 
 ### Tractable modeling frameworks
 As will be shown later, there are two essential arguments, *margins* and *cure*, in our main function and they can help us realize the follow different modeling frameworks.
-**The following two scenarios are what we mainly focused on**:
+
+The following two scenarios are **what we mainly focused on**:
 - **nonparametric survival margin and parametric censoring margin (without cure)**
   - *survfam = NULL*, *censfam* is not *NULL* and *cure = FALSE*.
 - **nonparametric survival margin and parametric censoring margin (with cure)**
   - *survfam = NULL*, *censfam* is not *NULL* and *cure = TRUE*.
+
 As byproducts, several other scenarios can also be considered by this *R* package:
 - **parametric survival margin and nonparametric censoring margin (without cure)**
   - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
