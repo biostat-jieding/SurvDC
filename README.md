@@ -38,7 +38,7 @@ As byproducts, several other scenarios can also be considered by this *R* packag
 - **parametric survival and censoring margins (with cure)**
   - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
 We emphasize that part of them can also be realized in other *R* packages.
-For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named *depCensoring*, which is available from https://cran.r-project.org/web/packages/depCensoring/index.html.
+For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named *depCensoring*, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org.
 
 ### Main function and its arguments
 The main function included in our *R* package is *SurvDC()*  and it can be called via the following *R* command:
