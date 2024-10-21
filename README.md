@@ -21,6 +21,25 @@ Currently, it can be loaded using *R* command
 devtools::install_github("biostat_jieding/SurvDC")
 ```
 
+### Tractable modeling frameworks
+As will be shown later, there are two essential arguments, *margins* and *cure*, in our main function and they can help us realize the follow different modeling frameworks.
+**The following two scenarios are what we mainly focused on**:
+- **nonparametric survival margin and parametric censoring margin (without cure)**
+  - *survfam = NULL*, *censfam* is not *NULL* and *cure = FALSE*.
+- **nonparametric survival margin and parametric censoring margin (with cure)**
+  - *survfam = NULL*, *censfam* is not *NULL* and *cure = TRUE*.
+As byproducts, several other scenarios can also be considered by this *R* package:
+- **parametric survival margin and nonparametric censoring margin (without cure)**
+  - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
+- **parametric survival margin and nonparametric censoring margin (with cure)**
+  - *survfam* is not *NULL*, *censfam = NULL* and *cure = TRUE*.
+  - - **parametric survival and censoring margins (without cure)**
+  - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
+- **parametric survival and censoring margins (with cure)**
+  - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
+We emphasize that part of them can also be realized in other *R* packages.
+For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named *depCensoring*, which is available from https://cran.r-project.org/web/packages/depCensoring/index.html.
+
 ### Main function and its arguments
 The main function included in our *R* package is *SurvDC()*  and it can be called via the following *R* command:
 ```R
@@ -29,8 +48,7 @@ SurvDC(
     delta,
     tm      = NULL, 
     copfam  = "frank",
-    margins = list(survfam = NULL,    survtrunc = NULL,  
-                   censfam = "lnorm", censtrunc = NULL),
+    margins = list(survfam = NULL, censfam = "lnorm"),
     cure    = FALSE,
     Var     = list(do = TRUE, nboot = 50),
     control = list(
@@ -50,8 +68,6 @@ Here, we provide a brief introduction of them:
 - **margins** a list used to define the distribution structures of both the survival and censoring margins. Specifically, it contains the following elements:
   - **survfam** a character string that defines the assumed distribution for the survival time random variable, including *"lnorm"* for log-normal distribution, *"weibull"* for weibull distribution (other options will be added in the near future).
   - **censfam** a character string that defines the assumed distribution for the censoring time random variable, and the details are the same as those shown in *survfam*.
-  - **survtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *survfam*.
-  - **censtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *censfam*.
 - **cure** a logical value that indicates whether the existence of a cured fraction should be considered.
 - **Var** a list that controls the execution of the bootstrap for variance estimation, and it contains two elements: *do* is a logical value with default *FALSE* to tell the function whether the boostrap-based variances should be calculated; *nboot* is a numeric integer that specifies the number of bootstrap samples.
 - **control** indicates more detailed control of the underlying model fitting procedures. It is a list of the following three arguments:
@@ -60,23 +76,11 @@ Here, we provide a brief introduction of them:
   - **trace** a logical value that judges whereh the tracing information on the progress of the model fitting should be produced. The default value if *TRUE*.
   - **ktau.inits** a numeric vector that contains initial values of the Kendall's tau. The default value is *NULL*, meaning that a grids of initial values will be automatically generated within our function.
  
-Note that if one of the marginal distributions should be modeled nonparametrically, one can let the corresponding argument to be *NULL* directly. For example if a semiparametric framework that defines the survival margin to be nonparametric and the censoring margin to be parametric, say log-normal, is desired, we can let *survfam = NULL* and *censfam = "lnorm"*, which is indeed the default value. Furthermore, if no truncation is imposed in *survfam* (or *censfam*), one can directly omit the specification of *survtrunc* (or *censtrunc*), which is the default specification. We also remark here that when a cured fraction is included (*cure = TRUE*), if *survfam* is not *NULL* and *survtrunc = NULL*, we will automatically let *survtrunc* to be *max(yobs)*. If we wants to model the data with a non-truncated survival distribution when there is a cured fraction, we can set *survtrunc = Inf*.
-
-### Tractable modeling frameworks
-We remark here that two essential arguments are *margins* and *cure* which can help us realize the follow different modeling frameworks:
-- **parametric survival and censoring margins (without cure)**
-  - both *survfam* and *censfam* are not *NULL and *cure = FALSE*.
-- **parametric survival and censoring margins (with cure)**
-  - both *survfam* and *censfam* are not *NULL* and *cure = TRUE*.
-- **nonparametric survival margin and parametric censoring margin (without cure)**
-  - *survfam = NULL*, *censfam* is not *NULL* and *cure = FALSE*.
-- **nonparametric survival margin and parametric censoring margin (with cure)**
-  - *survfam = NULL*, *censfam* is not *NULL* and *cure = TRUE*.
-- **parametric survival margin and nonparametric censoring margin (without cure)**
-  - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
-- **parametric survival margin and nonparametric censoring margin (with cure)**
-  - *survfam* is not *NULL*, *censfam = NULL* and *cure = TRUE*.
-
+Note that if one of the marginal distributions should be modeled nonparametrically, one can let the corresponding argument to be *NULL* directly. For example if a semiparametric framework that defines the survival margin to be nonparametric and the censoring margin to be parametric, say log-normal, is desired, we can let *survfam = NULL* and *censfam = "lnorm"*, which is indeed the default value. 
+Furthermore, in our argument *margins*, two addition elements can by inputted:
+- **survtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *survfam*.
+- **censtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *censfam*.
+If no truncation is imposed in *survfam* (or *censfam*), one can directly omit the specification of *survtrunc* (or *censtrunc*), which is the default specification. We also remark here that when a cured fraction is included (*cure = TRUE*), if *survfam* is not *NULL* and *survtrunc = NULL*, we will automatically let *survtrunc* to be *max(yobs)*. If we wants to model the data with a non-truncated survival distribution when there is a cured fraction, we can set *survtrunc = Inf*.
 
 ## Numerical illustrations
 
