@@ -6,7 +6,7 @@ This is an *R* package for providing approaches that can be used to model **righ
 - Allow for *flexible modeling frameworks*: One of the marginal distributions is nonparametric (**semiparametric scenario**).
   - As a byproduct, we can also consider the case where both marginal distributions are parametric.
 - The existence of **a cured fraction** concerning survival time can be considered.
-- *This R package was contributed by **Jie Ding** and **Ingrid Van Keilegom**.*
+- *This R package was contributed by **Jie Ding** (DLUT) and **Ingrid Van Keilegom** (KUL).*
 - References of the underlying methods include:
   - Czado and Van Keilegom (2023) (https://doi.org/10.1093/biomet/asac067).
   - Delhelle and Van Keilegom (2024) (https://doi.org/10.48550/arXiv.2403.07963).
