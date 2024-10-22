@@ -5,7 +5,7 @@ This is an *R* package for providing approaches that can be used to model **righ
 - There is ***no need** to explicitly specify the **association parameter***.
 - Allow for *flexible modeling frameworks*: One of the marginal distributions is nonparametric (**semiparametric scenario**).
   - As a byproduct, we can also consider the case where both marginal distributions are parametric.
-- The existence of **a cured fraction** concerning survival time can be considered.
+- The existence of **a cure fraction** concerning survival time can be considered.
 - *This R package was contributed by **Jie Ding** (DUT) and **Ingrid Van Keilegom** (KUL).*
 - References of the underlying methods include:
   - Czado and Van Keilegom (2023) (https://doi.org/10.1093/biomet/asac067).
@@ -73,7 +73,7 @@ Here, we provide a brief introduction of them:
 - **margins** a list used to define the distribution structures of both the survival and censoring margins. Specifically, it contains the following elements:
   - **survfam** a character string that defines the assumed distribution for the survival time random variable, including *"lnorm"* for log-normal distribution, *"weibull"* for weibull distribution (other options will be added in the near future).
   - **censfam** a character string that defines the assumed distribution for the censoring time random variable, and the details are the same as those shown in *survfam*.
-- **cure** a logical value that indicates whether the existence of a cured fraction should be considered.
+- **cure** a logical value that indicates whether the existence of a cure fraction should be considered.
 - **Var** a list that controls the execution of the bootstrap for variance estimation, and it contains two elements: *do* is a logical value with default *FALSE* to tell the function whether the boostrap-based variances should be calculated; *nboot* is a numeric integer that specifies the number of bootstrap samples.
 - **control** indicates more detailed control of the underlying model fitting procedures. It is a list of the following three arguments:
   - **maxit** a positive integer that denotes the maximum iteration number in optimization. The default value is *300*.
@@ -86,7 +86,7 @@ Furthermore, in our argument *margins*, two addition elements can by inputted:
 - **survtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *survfam*.
 - **censtrunc** a positive numeric value thats denotes the value of truncation for the assumed distribution, that is, *censfam*.
 
-If no truncation is imposed in *survfam* (or *censfam*), one can directly omit the specification of *survtrunc* (or *censtrunc*), which is the default specification. We also remark here that when a cured fraction is included (*cure = TRUE*), if *survfam* is not *NULL* and *survtrunc = NULL*, we will automatically let *survtrunc* to be *max(yobs)*. If we wants to model the data with a non-truncated survival distribution when there is a cured fraction, we can set *survtrunc = Inf*.
+If no truncation is imposed in *survfam* (or *censfam*), one can directly omit the specification of *survtrunc* (or *censtrunc*), which is the default specification. We also remark here that when a cure fraction is included (*cure = TRUE*), if *survfam* is not *NULL* and *survtrunc = NULL*, we will automatically let *survtrunc* to be *max(yobs)*. If we wants to model the data with a non-truncated survival distribution when there is a cure fraction, we can set *survtrunc = Inf*.
 
 ## Numerical illustrations
 
