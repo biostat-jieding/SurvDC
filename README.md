@@ -38,11 +38,11 @@ As will be shown later, there are two essential arguments, *margins* and *cure*,
 - *parametric survival margin and nonparametric censoring margin (without cure)*
   - *survfam* is not *NULL*, *censfam = NULL* and *cure = FALSE*.
 
-We emphasize that part of them can also be realized in other *R* packages. For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named **depCensoring**, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org.
-
 Furthermore, one might expect that a scenario with "parametric survival margin and nonparametric censoring margin (with cure)" can also be included.
 Indeed, it can be done by this *R* package based on: *survfam* is not *NULL*, *censfam = NULL* and *cure = TRUE*.
 However, from a theoretical perspective of view, whether this type of modeling is reasonable or not still needs further investigations.
+
+We emphasize that some of the scenarios (in byproducts) have also be considered in other *R* packages. For example, the scenario of "parametric survival margin and nonparametric censoring margin (without cure)" can be fitted based on the excellent *R* package named **depCensoring**, which is available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org. However, the default joint modeling of survival and censoring times are based on their joint survival function in line with our semiparametric case, but the idea of estimation methodology are exactly the same. 
 
 ### Main function and its arguments
 The main function included in our *R* package is *SurvDC()*  and it can be called via the following *R* command:
