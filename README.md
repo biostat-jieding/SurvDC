@@ -80,6 +80,7 @@ Here, we provide a brief introduction of them:
   - **eps** a positive small numeric value that denotes the tolerance for convergence. The default value is *1e-6*.
   - **trace** a logical value that judges whereh the tracing information on the progress of the model fitting should be produced. The default value if *TRUE*.
   - **ktau.inits** a numeric vector that contains initial values of the Kendall's tau. The default value is *NULL*, meaning that a grids of initial values will be automatically generated within our function.
+  - **joint.type** (to appear) a character string that indicates the jointing modeling is based on the survival function (*joint.type="survival"*, the default) or distribution (*joint.type="distribution"*). 
  
 Note that if one of the marginal distributions should be modeled nonparametrically, one can let the corresponding argument to be *NULL* directly. For example if a semiparametric framework that defines the survival margin to be nonparametric and the censoring margin to be parametric, say log-normal, is desired, we can let *survfam = NULL* and *censfam = "lnorm"*, which is indeed the default value. 
 Furthermore, in our argument *margins*, two addition elements can by inputted:
