@@ -253,7 +253,7 @@ sol.scenario4$curerate
 scenario 5: parametric survival and censoring margins
 ```R
 set.seed(1)
-sol.scenario4 <- SurvDC(
+sol.scenario5 <- SurvDC(
   yobs    = yobs, 
   delta   = delta, 
   tm      = quantile(yobs, c(0.25,0.50,0.75)), 
